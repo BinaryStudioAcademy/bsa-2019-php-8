@@ -53,8 +53,17 @@ if (Gate::denies(‘isAdmin', $product)) ...
 ```
 
 ### Запуск тестов
-1. Создайте APP_URL в .env
-2. Запустите тесты
+
+#### Локально
+Допишите порт в .env
+```
+APP_URL=http://localhost:8000
+```
+Запустите веб сервер
+```
+php artisan serve --port=8080
+```
+Запустите тесты
 ```
 php artisan dusk
 ```
