@@ -1,72 +1,86 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# Binary Studio Academy 2019 PHP
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Домашнее задание Laravel auth
 
-## About Laravel
+### Цель
+Ознакомиться с механизмами аутентификации и авторизации в Laravel.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Установка
+Установка показана в рабочем окружении OS Linux:
+```
+git clone git@github.com:BinaryStudioAcademy/bsa-2018-php-9.git
+cd bsa-2018-php-9
+composer install
+cp .env.example .env
+php artisan key:generate
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Подготовка
+1. Добавить entity Product и миграцию с полями id, name, price, user_id.
+2. Создать по роуту "/" главную страницу, содержащую текст: "Marketplace".
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Задание 1
+Добавить возможность регистрации новых пользователей и аутентификации с помощью email и password.
 
-## Learning Laravel
+1. После аутентификации показывать пользователю страницу со списком товаров /products.
+2. Закрыть доступ ко всем страницам, кроме главной для пользователей, не прошедших аутентификацию.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Задание 2
+Добавить возможность аутентификации через социальную сеть или сервис, например, Фейсбук (Socialite, SocialiteProviders, etc.)
+Для этого нужно будет зарегистрировать приложение на используемом ресурсе и использовать предоставленные ключи внутри .env Laravel приложения.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1400 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Задание 3
+Реализовать механизм авторизации с помощью ролей. 
 
-## Laravel Sponsors
+- Ролей должно быть 2: обычный пользователь и администратор.
+- Для хранения роли нужно изменить миграцию для таблицы [users]: добавить флаг is_admin.
+- Права доступа:
+    - Пользователь должен иметь доступ к страницам списка товаров и отдельного товара.
+    - Пользователь должен видеть контролы для редактирования, удаления своего товара, а так же добавления нового.
+    - Пользователь не должен иметь доступа к соответствующим действиям(добавление, обновление, удаление) для товара другого пользователя.
+    - Администратор должен видеть контролы для редактирования, удаления любого товара, а так же добавление нового и иметь доступ к соответствующим действиям.
+    - В случае попытки неавторизованного доступа на любую из страниц - перенаправлять на (/login).
+- Контроль прав доступа нужно реализовать в классах Policy.
+- Проверка критерия предоставления доступа должна происходить в методах класса полиси.
+То есть в контроллерах в итоге должна быть проверка типа
+```
+if (Gate::denies(‘update', $product)) ...
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+вместо
+```
+if (Gate::denies(‘isAdmin', $product)) ...
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
+### Запуск тестов
+1. Создайте APP_URL в .env
+2. Запустите тесты
+```
+php artisan dusk
+```
 
-## Contributing
+#### Запуск тестов c Homestead
+Зайдите на виртуальную машину через ssh из папки, где установлен Homestead
+```
+vagrant ssh
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Перейдите в директорию проекта и запустите
+```
+php artisan serve --host=192.168.10.10 --port=8080
+```
 
-## Security Vulnerabilities
+Установите в '.env' строку
+```
+APP_URL=http://192.168.10.10:8080
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Теперь можно запустить тесты.
+```
+php artisan dusk
+```
 
-## License
+см. [https://laravel.com/docs/5.8/dusk](https://laravel.com/docs/5.8/dusk)
 
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Дополнительно
+Примеры из лекции доступны здесь: [https://github.com/Antarus66/Auth-samples](https://github.com/Antarus66/Auth-samples)
