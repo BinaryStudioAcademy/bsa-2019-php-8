@@ -7,7 +7,7 @@ use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 use Tests\TestDataFactory;
 
-class Task1AuthorizationTest extends DuskTestCase
+class AuthorizationTest extends DuskTestCase
 {
     use DatabaseMigrations;
 
