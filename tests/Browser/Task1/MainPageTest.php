@@ -8,6 +8,8 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class MainPageTest extends DuskTestCase
 {
+    use DatabaseMigrations;
+
     public function testMainPage()
     {
         $this->browse(function (Browser $browser) {

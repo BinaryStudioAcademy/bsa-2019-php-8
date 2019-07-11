@@ -5,9 +5,12 @@ namespace Tests\Browser\Task1;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\TestDataFactory;
 
 class AuthExistTest extends DuskTestCase
 {
+    use DatabaseMigrations;
+
     const USER_PASSWORD = 'secret';
 
     public function testMainPage()
