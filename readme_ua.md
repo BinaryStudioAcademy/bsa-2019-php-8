@@ -86,6 +86,6 @@ php artisan serve --host=192.168.10.10 --port=8080
 php artisan dusk
 ```
 
-### Дополнительно
+### Додатково
 Документація Dusk - [https://laravel.com/docs/5.8/dusk](https://laravel.com/docs/5.8/dusk)
 Приклади з лекції - [https://github.com/Antarus66/Auth-samples](https://github.com/Antarus66/Auth-samples)
