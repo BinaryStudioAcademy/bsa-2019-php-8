@@ -8,8 +8,8 @@
 ### Установка
 Установка показана в рабочем окружении OS Linux:
 ```
-git clone git@github.com:BinaryStudioAcademy/bsa-2018-php-9.git
-cd bsa-2018-php-9
+git clone git@github.com:BinaryStudioAcademy/bsa-2019-php-9.git
+cd bsa-2019-php-9
 composer install
 cp .env.example .env
 php artisan key:generate
