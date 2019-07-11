@@ -107,7 +107,7 @@ class UserActionsTest extends DuskTestCase
             }
         );
 
-        $this->assertDatabaseHas('product', [
+        $this->assertDatabaseHas('products', [
             'name' => 'User Add Test Product',
             'price' => 49.99
         ]);
@@ -131,7 +131,7 @@ class UserActionsTest extends DuskTestCase
             }
         );
 
-        $this->assertDatabaseHas('product', [
+        $this->assertDatabaseHas('products', [
             'name' => 'User Update Test Product',
             'price' => 39.99
         ]);
@@ -153,7 +153,7 @@ class UserActionsTest extends DuskTestCase
             }
         );
 
-        $this->assertDatabaseMissing('product', [
+        $this->assertDatabaseMissing('products', [
             'id' => $product->id
         ]);
     }

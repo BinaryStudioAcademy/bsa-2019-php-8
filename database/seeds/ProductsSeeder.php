@@ -13,17 +13,6 @@ class ProductsSeeder extends Seeder
      */
     public function run()
     {
-        Product::query()->insert([
-            [
-                'name' => 'Product1',
-                'price' => 10.5,
-                'user_id' => User::where('email', 'user@example.com')->first()->id
-            ],
-            [
-                'name' => 'Product2',
-                'price' => 25.1,
-                'user_id' => User::where('email', 'admin@example.com')->first()->id
-            ]
-        ]);
+        factory(Product::class, 30)->create();
     }
 }

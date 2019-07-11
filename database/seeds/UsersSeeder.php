@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Entity\User;
+use Illuminate\Support\Facades\Hash;
 
 class UsersSeeder extends Seeder
 {
@@ -12,19 +13,6 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        User::query()->insert([
-            [
-                'name' => 'User',
-                'email' => 'user@example.com',
-                'password' => Hash::make('secret'),
-                'is_admin' => false
-            ],
-            [
-                'name' => 'Admin',
-                'email' => 'admin@example.com',
-                'password' => Hash::make('secret'),
-                'is_admin' => true
-            ]
-        ]);
+        factory(User::class, 10)->create();
     }
 }

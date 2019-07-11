@@ -9,15 +9,13 @@ class TestDataFactory
 {
     public static function createUser(): User
     {
-        return factory(User::class)->create([
-            'is_admin' => false
-        ]);
+        return factory(User::class)->create();
     }
 
     public static function createProduct(User $user): Product
     {
-        return factory(Product::class, ['user_id' => $user->id])
-            ->create();
+        return factory(Product::class)
+            ->create(['user_id' => $user->id]);
     }
 
     public static function createAdminUser(): User
