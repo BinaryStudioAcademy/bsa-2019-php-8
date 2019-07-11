@@ -36,7 +36,7 @@ class AuthExistTest extends DuskTestCase
                     ->type('email', $user->email)
                     ->type('password', self::USER_PASSWORD)
                     ->press('Login')
-                    ->assertPathIs('/currencies')
+                    ->assertPathIs('/products')
                     ->assertDontSeeLink('Login');
             }
         );
