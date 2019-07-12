@@ -85,5 +85,5 @@ php artisan dusk
 ```
 
 ### Дополнительно
-Документация Dusk - [https://laravel.com/docs/5.8/dusk](https://laravel.com/docs/5.8/dusk)
-Примеры из лекции - [https://github.com/Antarus66/Auth-samples](https://github.com/Antarus66/Auth-samples)
+* Документация Dusk - [https://laravel.com/docs/5.8/dusk](https://laravel.com/docs/5.8/dusk)
+* Примеры из лекции - [https://github.com/Antarus66/Auth-samples](https://github.com/Antarus66/Auth-samples)
