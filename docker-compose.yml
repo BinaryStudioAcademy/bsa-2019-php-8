@@ -13,6 +13,7 @@ services:
     environment:
       SERVICE_NAME: app
       SERVICE_TAGS: dev
+      USE_SELENIUM: "true"
     working_dir: /var/www
     volumes:
        - ./:/var/www
@@ -67,6 +68,16 @@ services:
       MYSQL_ROOT_PASSWORD: your_mysql_root_password
       SERVICE_TAGS: dev
       SERVICE_NAME: phpmyadmin
+    networks:
+     - app-network
+
+  selenium:
+    image: selenium/standalone-chrome:3.11.0-antimony
+    container_name: selenium
+    depends_on:
+     - app
+    volumes:
+     - /dev/shm:/dev/shm
     networks:
      - app-network
 
