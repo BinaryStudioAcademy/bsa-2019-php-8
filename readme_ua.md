@@ -65,6 +65,16 @@ php artisan serve --port=8000
 php artisan dusk
 ```
 
+#### Docker
+Змінити в `.env` значення
+```
+APP_URL=http://webserver
+```
+Запустити тести
+```
+php artisan dusk
+```
+
 #### Запуск тестів в Homestead
 Змінити в `.env` значення
 ```

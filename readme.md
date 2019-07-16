@@ -63,6 +63,16 @@ php artisan serve --port=8000
 php artisan dusk
 ```
 
+#### Docker
+Установите в `.env` строку
+```
+APP_URL=http://webserver
+```
+Запустите тесты
+```
+php artisan dusk
+```
+
 #### Запуск тестов c Homestead
 Зайдите на виртуальную машину через ssh из папки, где установлен Homestead
 ```
