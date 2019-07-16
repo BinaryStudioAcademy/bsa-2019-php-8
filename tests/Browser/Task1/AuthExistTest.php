@@ -11,7 +11,7 @@ class AuthExistTest extends DuskTestCase
 {
     use DatabaseMigrations;
 
-    const USER_PASSWORD = 'secret';
+    const USER_PASSWORD = 'password';
 
     public function testMainPage()
     {
